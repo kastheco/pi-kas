@@ -1,0 +1,30 @@
+{
+  "name": "pi-kas",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Kas's Pi extensions, skills, prompts, and themes.",
+  "keywords": [
+    "pi-package"
+  ],
+  "scripts": {
+    "check": "node scripts/check.mjs"
+  },
+  "peerDependencies": {
+    "@earendil-works/pi-coding-agent": "*"
+  },
+  "pi": {
+    "extensions": [
+      "./extensions"
+    ],
+    "skills": [
+      "./skills"
+    ],
+    "prompts": [
+      "./prompts"
+    ],
+    "themes": [
+      "./themes"
+    ]
+  }
+}

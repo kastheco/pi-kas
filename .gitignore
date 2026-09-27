@@ -1,0 +1,4 @@
+node_modules/
+*.log
+.pi/tasks/
+.pi/hindsight/

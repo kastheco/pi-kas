@@ -1,0 +1,219 @@
+---
+name: "project-documentation-reconciliation"
+description: "Reconcile project code, Notion, Linear, README, and public docs, then update each source with verified state."
+---
+
+# Project documentation reconciliation
+
+Reconcile a project's implemented state with Notion, Linear, README files, and related public documentation, then update the documentation without breaking hierarchy or visual conventions.
+
+## Required skills
+
+When Notion is in scope:
+
+- invoke `notion-rose-pine-ui` for page hierarchy, copy, full-width layout, native Notion formatting, and visual restraint
+- invoke `notion-svg-diagrams` for architecture, flow, dependency, roadmap, and status diagrams
+- use `ntn` on the authenticated host as the default Notion interface
+- use browser automation only when `ntn` cannot perform a required UI-only operation, such as enabling Full width
+
+Never substitute Mermaid for a Notion diagram.
+
+## Procedure
+
+### 1. establish scope and authority
+
+1. Read repository instructions and identify the project repositories, canonical Notion wiki root, Linear team or project, README files, and public documentation surfaces.
+2. Record each source's URL or path, current revision where available, and whether it is writable in the current task.
+3. Establish authority by claim type:
+   - code, tests, and runtime evidence establish implemented behavior
+   - Linear establishes planned and tracked work
+   - Notion establishes durable design context and decisions
+   - README and public docs establish published claims
+   - current user corrections override older documentation
+4. Treat generated artifacts, drafts, queued work, and populated forms as incomplete until their corresponding write or publish action succeeds.
+
+Completion criterion: every relevant source is located or explicitly marked unavailable, and each claim type has a named authority.
+
+### 2. snapshot before mutation
+
+1. Record Git status and preserve unrelated or uncommitted work.
+2. Fetch the current Notion root, data source, page IDs, parent IDs, child-page blocks, and internal links with `ntn`.
+3. Export or mirror every Notion page that may be changed before changing hierarchy or content.
+4. Query relevant Linear issues, parent-child relationships, states, and linked documents.
+5. Capture current README and public-document revisions.
+6. Do not move, archive, recreate, or delete a Notion page until its content and descendants are represented in the snapshot.
+
+Completion criterion: the pre-change tree and source revisions can be audited, and no planned mutation depends on an assumed parent relationship.
+
+### 3. research in parallel
+
+Spawn bounded subagents in parallel when the runtime supports them:
+
+- **implementation researcher:** inspect code, tests, runtime contracts, recent history, and deployed behavior
+- **Notion researcher:** inspect the canonical wiki hierarchy, decisions, diagrams, stale claims, duplicate hubs, and broken links
+- **Linear researcher:** inspect active, completed, canceled, and superseded work plus dependencies and acceptance criteria
+- **public-doc researcher:** inspect README files, docs sites, release notes, examples, and externally visible claims
+
+Give each researcher:
+
+- exact sources and read-only boundaries
+- a structured output schema
+- the same evidence labels: `confirmed`, `documented`, `inferred`, `proposed`, `open`, `stale`, `superseded`
+- a requirement to cite files, symbols, tests, issue URLs, page URLs, commits, or runtime evidence
+- a prohibition on updating sources during research
+
+Run local critical-path inspection while researchers work. Do not create multiple agents for a small source set when coordination would cost more than it saves.
+
+Completion criterion: each source surface has a cited findings report, or its investigation is explicitly blocked.
+
+### 4. build the reconciliation ledger
+
+Create one claim ledger with:
+
+- claim or topic
+- implementation evidence
+- Notion state
+- Linear state
+- README or public-doc state
+- authoritative conclusion
+- required update
+- target surface
+- confidence and remaining gap
+
+Classify discrepancies:
+
+- implemented but undocumented
+- documented but not implemented
+- planned but presented as current
+- completed but still shown as pending
+- canceled or superseded but still visible
+- conflicting ownership or architecture
+- broken hierarchy or internal link
+- duplicate project hub
+- unsupported impact, chronology, adoption, or maturity claim
+
+Prefer exact corrections over broad rewrites. Never turn roadmap intent into current-state documentation.
+
+Completion criterion: every intended edit traces to a cited discrepancy in the ledger.
+
+### 5. plan one canonical information architecture
+
+1. Identify one canonical project hub under the existing wiki root.
+2. Preserve the established hierarchy. A typical tree is:
+   - project index
+   - current state
+   - architecture
+   - roadmap and decisions
+   - research and evidence
+   - operations or runbooks
+   - archive
+3. Reuse existing canonical pages and data-source entries. Avoid duplicate roots.
+4. Keep overview pages concise and link to focused subpages.
+5. Preserve page IDs where practical so external links remain valid.
+6. Before any move, verify the destination type: wiki data source, database entry, regular page, or child page.
+7. After any move, fetch the page again and verify its parent ID and descendants. Never trust drag-and-drop appearance alone.
+
+Completion criterion: the proposed tree has one canonical root, no orphaned pages, and an explicit mapping from every existing page to its final location.
+
+### 6. update Notion
+
+Follow `notion-rose-pine-ui` completely.
+
+1. Use `ntn` to update content and parent relationships.
+2. Keep Kas-owned project names lowercase while preserving external product names, acronyms, paths, code, and quoted errors.
+3. Use native Notion blocks, restrained hierarchy, compact copy, and full-width layout.
+4. Use standalone tables at full available width.
+5. Label important claims by evidence state when readers could otherwise confuse current behavior with plans.
+6. Invoke `notion-svg-diagrams` for every needed architecture, sequence, dependency, roadmap, or status visual.
+7. Generate hand-authored Rosé Pine Moon SVGs, upload them through the supported Notion file-upload flow, and embed the upload IDs.
+8. Replace stale diagrams rather than layering contradictory visuals.
+9. Rewrite internal links after moves or replacements, then verify every target.
+
+Completion criterion: Notion reflects the authoritative ledger, follows both required Notion skills, and its full hierarchy and links are verified through `ntn`.
+
+### 7. update Linear
+
+1. Reuse canonical issues and preserve parent-child relationships.
+2. Update descriptions, evidence links, acceptance criteria, dependencies, and current state only when supported by the ledger.
+3. Mark superseded plans explicitly rather than blending them into current work.
+4. Do not assign estimates, dates, priorities, or owners without evidence or user direction.
+5. Keep Notion for durable context and Linear for actionable tracked work. Link instead of duplicating long prose.
+
+Completion criterion: each changed issue accurately reflects current work and links to the canonical supporting documentation.
+
+### 8. update README and public documentation
+
+1. Make README and public docs describe shipped or verified behavior precisely.
+2. Separate current behavior, configuration, limitations, non-goals, and future work.
+3. Keep responsibility boundaries explicit across components.
+4. Correct stale commands, versions, diagrams, examples, and links.
+5. Run repository formatting, link, documentation, and test checks that are relevant to changed files.
+6. Modify local source files when authorized. Do not push, publish, release, or deploy without explicit authorization.
+
+Completion criterion: public claims agree with code and the ledger, and relevant checks pass or are reported as blocked.
+
+### 9. create project artwork when requested
+
+For a new or materially rebuilt project hub, create:
+
+- a custom ukiyo-e page avatar
+- a contrasting but complementary ukiyo-e cover
+
+Requirements:
+
+- derive imagery from the project's actual purpose and architecture
+- keep the avatar legible at small size with one dominant subject
+- keep the cover wider, quieter, and compositionally complementary
+- avoid text, logos, fake Japanese writing, and unrelated decorative symbolism
+- use a shared palette relationship without making both images identical
+- prefer Rosé Pine Moon-compatible tones when they fit the project
+- preserve existing approved artwork unless replacement is in scope
+
+Use an available image-generation tool. Upload or host artwork only through an authorized path. If no authorized upload path exists, generate the assets locally and report the exact embedding blocker.
+
+Completion criterion: avatar and cover are distinct, coherent, project-specific, and either installed successfully or delivered with an explicit blocker.
+
+### 10. verify end to end
+
+1. Re-fetch the Notion wiki root and print the final page tree with IDs and parent IDs.
+2. Verify expected descendants, internal links, SVG embeds, full-width setting, and absence of duplicate live roots.
+3. Re-query changed Linear issues and verify states and relationships.
+4. Re-read changed README and public docs from disk.
+5. Re-run relevant checks.
+6. Compare the final state against the reconciliation ledger.
+7. Report separately:
+   - inspected
+   - updated
+   - created
+   - archived
+   - generated
+   - blocked
+   - not published or not deployed
+
+Completion criterion: every claimed mutation is backed by a successful write and a read-after-write verification.
+
+## Guardrails
+
+- Preserve user work and unrelated changes.
+- Prefer native moves and targeted edits over recreating pages.
+- Archive only after the replacement structure is complete and verified.
+- Never delete or flatten a wiki tree based solely on the UI.
+- Keep secrets, credentials, private context, and raw transcripts out of public documentation.
+- Do not invent dates, durations, impact, adoption, production maturity, or causal claims.
+- Label estimates and inference explicitly.
+- A draft is not sent, a queued action is not complete, and generated artwork is not embedded until the upload and page update succeed.
+
+## Final report
+
+Report:
+
+- sources inspected with revisions
+- authoritative current-state summary
+- discrepancies found
+- Notion pages updated, moved, created, or archived with URLs
+- Linear issues updated with URLs
+- README and public docs changed with paths
+- SVG diagrams and artwork created with locations
+- checks and read-after-write verification
+- unresolved conflicts and research gaps
+- actions that remain unsubmitted, unpublished, undeployed, or blocked
