@@ -5,7 +5,9 @@ Kas's Pi package for custom extensions, skills, prompts, and themes.
 ## use locally
 
 ```bash
-pi install /home/kas/dev/pi-kas
+git clone https://github.com/kastheco/pi-kas.git
+cd pi-kas
+pi install "$PWD"
 ```
 
 Reload an existing Pi session with `/reload` after installing or changing the package.
