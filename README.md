@@ -27,7 +27,7 @@ The underlying skill remains available as `/skill:project-documentation-reconcil
 
 ## skills
 
-### `unfuck`
+### `relax`
 
 cuts an over-engineered agent plan back to the simplest version that keeps your request, decisions, and acceptance criteria. it asks before changing a decision or criterion.
 
@@ -35,17 +35,17 @@ pi loads it from this package. for claude code, codex, and omp, link it from the
 
 ```bash
 mkdir -p ~/.agents/skills ~/.claude/skills
-ln -s "$PWD/skills/unfuck" ~/.agents/skills/unfuck   # codex, omp
-ln -s "$PWD/skills/unfuck" ~/.claude/skills/unfuck   # claude code
+ln -s "$PWD/skills/relax" ~/.agents/skills/relax   # codex, omp
+ln -s "$PWD/skills/relax" ~/.claude/skills/relax   # claude code
 ```
 
 link it instead of copying. pi reads `~/.agents/skills` too, and it only skips the duplicate when both paths resolve to the same file.
 
 | harness | command |
 |---|---|
-| claude code | `/unfuck` |
-| codex | `$unfuck` |
-| pi, omp | `/unfuck` or `/skill:unfuck` |
+| claude code | `/relax` |
+| codex | `$relax` |
+| pi, omp | `/relax` or `/skill:relax` |
 
 ## layout
 

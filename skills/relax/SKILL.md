@@ -1,9 +1,9 @@
 ---
-name: unfuck
-description: cut an over-engineered plan back to the simplest version that keeps the user's request, decisions, and acceptance criteria. use when the user types /unfuck or asks to cut a plan down.
+name: relax
+description: cut an over-engineered plan back to the simplest version that keeps the user's request, decisions, and acceptance criteria. use when the user types /relax or asks to cut a plan down.
 ---
 
-# unfuck
+# relax
 
 cut the current plan down to the simplest thing that could possibly work: the whole request, every user decision, every acceptance criterion, and nothing else. the cut plan only removes and shrinks.
 
